@@ -10,6 +10,8 @@ function updateAll(dt)
     if gameMap then 
         gameMap:update(dt)
     end
+
+    updatePlaytime(dt)
     checkWindowSize()
 end 
 
@@ -19,16 +21,27 @@ function updateGame(dt)
     if globalStun > 0 then return end 
 
     flux.update(dt)
-    --menu:update(dt)
 
     player:update(dt)
     world:update(dt)
     walls:update(dt)
     waters:update(dt)
-    --etc
 
-
-    --utilities
     cam:update(dt)
 
+    checkAutoSave(dt)
+end
+
+
+local autoSaveTimer = 0 
+local autoSaveInterval = 300 
+
+function checkAutoSave(dt)
+    if gamestate == 1 then
+        autoSaveTimer = autoSaveTimer + dt
+        if autoSaveTimer >= autoSaveInterval then
+            autoSaveTimer = 0 
+            saveGame()
+        end
+    end
 end

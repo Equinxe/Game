@@ -57,6 +57,7 @@
 
     local dirX = 0 
     local dirY = 0
+    local wasWalking = player.walking
 
     if love.keyboard.isDown("z") or love.keyboard.isDown("up") then
         dirY = -1
@@ -93,6 +94,9 @@
     end
     
     
+    if player.walking and not wasWalking and gamestate == 1 then
+        incrementSteps()
+    end
     
     
     if player.walking then
