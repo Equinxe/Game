@@ -50,10 +50,10 @@ function menuSave:draw()
     end
 
     love.graphics.setFont(fonts.title)
-    love.graphics.setColor(1,0.9,0.5,1)
+    love.graphics.setColor(1,1,1,1)
 
     local title = string.upper(menuSave.activeMenu)
-    love.graphics.printf(title, 0, window_Height * 0.05, window_Width, "center")
+    love.graphics.printf(title, 0, window_Height * 0.1, window_Width, "center")
 
 
     love.graphics.setFont(fonts.menu)
